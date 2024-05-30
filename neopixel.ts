@@ -46,7 +46,7 @@ namespace neopixel {
      */
     export class Strip {
         buf: Buffer;
-        pin: DigitalPin;
+        pin: number;
         // TODO: encode as bytes instead of 32bit
         brightness: number;
         start: number; // start offset in LED strip
@@ -374,9 +374,11 @@ namespace neopixel {
          */
         //% weight=10
         //% parts="neopixel" advanced=true
-        setPin(pin: DigitalPin): void {
+        setPin(pin: 12): void {
             this.pin = pin;
-            pins.digitalWritePin(this.pin, 0);
+    //        pins.digitalWritePin(this.pin, 0);
+            pins.pinByCfg(DAL.CFG_PIN_ACCELEROMETER_SCL).digitalWrite(false);
+     //       pins.digitalWritePin(this.pin, 0);
             // don't yield to avoid races on initialization
         }
 
@@ -492,7 +494,7 @@ namespace neopixel {
     //% parts="neopixel"
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(pin: DigitalPin, numleds: number, mode: NeoPixelMode): Strip {
+    export function create(pin: 12, numleds: number, mode: NeoPixelMode): Strip {
         let strip = new Strip();
         let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(numleds * stride);
@@ -593,3 +595,4 @@ namespace neopixel {
         Shortest
     }
 }
+

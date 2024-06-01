@@ -5,7 +5,7 @@
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "ws2812b": "github:MasonChen1003/pxt-ws2812b3h4"
+        "ws2812b": "github:MasonChen1003/pxt-ws2812b3h5"
     },
     "files": [
         "README.md",
